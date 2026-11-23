@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Jay Pasulohan — Front-End & WordPress Developer</title>
+    <meta name="description" content="Portfolio of Ryan Jay Pasulohan, a Front-End & WordPress Developer based in Cebu, Philippines.">
+
+    <!-- Editorial Typography: Newsreader + Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FAF9F6;
+            --surface: #FFFFFF;
+            --ink: #18181B;
+            --muted: #52525B;
+            --subtle: #71717A;
+            --border: #E4E4E7;
+            --accent: #1B4332;
+            --accent-hover: #122E22;
+            --accent-soft: #EEF4F0;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --container-width: 920px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-sans);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background-color: var(--accent);
+            color: #FFFFFF;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header Navigation */
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4.5rem 0 5.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background-color: var(--accent-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .avatar-fallback {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .hero-role {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .hero-location {
+            font-size: 0.825rem;
+            color: var(--subtle);
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: clamp(2.25rem, 5vw, 3.35rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            max-width: 22ch;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-summary {
+            font-size: 1.0625rem;
+            color: var(--muted);
+            max-width: 60ch;
+            margin-bottom: 2.25rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.4rem;
+            background-color: var(--accent);
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .link-subtle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--muted);
+            padding-bottom: 2px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .link-subtle:hover {
+            color: var(--ink);
+            border-bottom-color: var(--ink);
+        }
+
+        /* Section Layout */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--subtle);
+            margin-bottom: 2.25rem;
+            display: block;
+        }
+
+        /* Featured Work Card */
+        .project-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2.25rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .project-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .project-title {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent);
+            background-color: var(--accent-soft);
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+        }
+
+        .project-desc {
+            color: var(--muted);
+            font-size: 0.975rem;
+            max-width: 64ch;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+            font-size: 0.825rem;
+            color: var(--subtle);
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Core Craft Grid (3 Columns) */
+        .craft-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.25rem;
+        }
+
+        .craft-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .craft-item p {
+            font-size: 0.925rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* Background / Experience Snapshot */
+        .background-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .background-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 1.5rem;
+            align-items: baseline;
+        }
+
+        .background-period {
+            font-size: 0.85rem;
+            color: var(--subtle);
+        }
+
+        .background-detail h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.35rem;
+        }
+
+        .background-detail h3 span {
+            font-weight: 400;
+            color: var(--muted);
+        }
+
+        .background-detail p {
+            font-size: 0.935rem;
+            color: var(--muted);
+            max-width: 58ch;
+        }
+
+        /* Footer / Contact */
+        footer {
+            padding: 5rem 0 4rem;
+        }
+
+        .footer-heading {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: clamp(1.85rem, 4vw, 2.5rem);
+            line-height: 1.2;
+            letter-spacing: -0.015em;
+            max-width: 20ch;
+            margin-bottom: 1rem;
+        }
+
+        .footer-sub {
+            color: var(--muted);
+            font-size: 0.975rem;
+            max-width: 50ch;
+            margin-bottom: 2rem;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 2rem;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .copy-email-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: none;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .copy-email-trigger:hover {
+            color: var(--accent-hover);
+            border-bottom-color: var(--accent-hover);
+        }
+
+        .copy-badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--subtle);
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .copy-badge.copied {
+            background-color: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .contact-item {
+            font-size: 0.925rem;
+            color: var(--muted);
+        }
+
+        .contact-item:hover {
+            color: var(--ink);
+        }
+
+        .footer-bottom {
+            padding-top: 1.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.825rem;
+            color: var(--subtle);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0 4rem;
+            }
+
+            section {
+                padding: 3.75rem 0;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .craft-grid {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+
+            .background-row {
+                grid-template-columns: 1fr;
+                gap: 0.35rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 1.15rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Minimal Header -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="brand">Ryan Jay Pasulohan</a>
+            <nav class="nav-links" aria-label="Primary Navigation">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-header">
+                    <div class="avatar-wrap">
+                        <img 
+                            src="./images/ryanjaypasulohan.png" 
+                            alt="Ryan Jay Pasulohan"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                        >
+                        <span class="avatar-fallback" style="display: none;">RP</span>
+                    </div>
+                    <div class="hero-meta">
+                        <span class="hero-role">Front-End &amp; WordPress Developer</span>
+                        <span class="hero-location">Minglanilla, Cebu, Philippines</span>
+                    </div>
+                </div>
+
+                <h1>
+                    Front-End &amp; WordPress Developer crafting <em>fast, resilient</em> web experiences.
+                </h1>
+
+                <p class="hero-summary">
+                    Over the past three years in Cebu, I’ve specialized in building custom WordPress architectures, refining Core Web Vitals, and developing clean, responsive front-end interfaces that balance visual clarity with dependable performance.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="mailto:ryan.pasulohan@gmail.com" class="btn-primary">Get in touch</a>
+                    <a href="https://ryanjaypasulohan.infinityfreeapp.com" target="_blank" rel="noopener noreferrer" class="link-subtle">
+                        <!-- <span>Live site</span> -->
+                        <span aria-hidden="true">&nearr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Work & Capabilities -->
+        <section id="work">
+            <div class="container">
+                <span class="section-label">Selected Work &amp; Craft</span>
+
+                <!-- Featured Project -->
+                <article class="project-card">
+                    <div class="project-top">
+                        <h2 class="project-title">SEO Blog Generator Tool</h2>
+                        <span class="project-tag">Full-Stack &amp; AI Workflow</span>
+                    </div>
+                    <p class="project-desc">
+                        Contributed to a full-stack content generation platform built to streamline SEO-focused editorial workflows. Engineered responsive UI components and helped integrate Google’s Gemini API to deliver fast, structured draft generation.
+                    </p>
+                    <div class="project-stack">
+                        <span>Laravel</span>
+                        <span>React</span>
+                        <span>Tailwind CSS</span>
+                        <span>Material UI</span>
+                        <span>Gemini API</span>
+                    </div>
+                </article>
+
+                <!-- 3-Column Core Craft -->
+                <div class="craft-grid">
+                    <div class="craft-item">
+                        <h3>Custom WordPress Architecture</h3>
+                        <p>
+                            Bespoke themes, modular Advanced Custom Fields (ACF) setups, safe child-theme workflows, plugin customization, and proactive security hardening.
+                        </p>
+                    </div>
+
+                    <div class="craft-item">
+                        <h3>Front-End Engineering</h3>
+                        <p>
+                            Translating design concepts into responsive, accessible interfaces with HTML5, CSS3, JavaScript, React, and Tailwind CSS.
+                        </p>
+                    </div>
+
+                    <div class="craft-item">
+                        <h3>Speed &amp; Technical SEO</h3>
+                        <p>
+                            Core Web Vitals tuning, asset optimization via PageSpeed Insights and GTmetrix, and clean search indexing structure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Distilled Experience & Education -->
+        <section id="about">
+            <div class="container">
+                <span class="section-label">Background</span>
+
+                <div class="background-list">
+                    <div class="background-row">
+                        <div class="background-period">2023 — Present</div>
+                        <div class="background-detail">
+                            <h3>Web Developer III <span>&mdash; Proweaver PH</span></h3>
+                            <p>
+                                Progressed from Level I to Level III; leading custom WordPress builds, technical troubleshooting, security audits, and mentoring fellow developers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="background-row">
+                        <div class="background-period">2019 — 2023</div>
+                        <div class="background-detail">
+                            <h3>BS Industrial Technology <span>&mdash; Talisay City College</span></h3>
+                            <p>
+                                Foundation in systems architecture, technical problem-solving, and web application development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer & Contact -->
+    <footer id="contact">
+        <div class="container">
+            <h2 class="footer-heading">Available for web builds and WordPress consulting.</h2>
+            <p class="footer-sub">
+                Have a project in mind or need help optimizing an existing site? Feel free to reach out directly.
+            </p>
+
+            <div class="contact-bar">
+                <button type="button" id="copy-email" class="copy-email-trigger" title="Click to copy email address">
+                    <span>ryan.pasulohan@gmail.com</span>
+                    <span id="copy-status" class="copy-badge">Copy</span>
+                </button>
+
+                <a href="tel:+639364821698" class="contact-item">+63 936 482 1698</a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-item">LinkedIn &nearr;</a>
+                <span class="contact-item">Minglanilla, Cebu</span>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; <span id="year">2026</span> Ryan Jay Pasulohan</span>
+                <span>Built with semantic HTML &amp; CSS</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Keep copyright year current
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Subtle click-to-copy email interaction
+        const copyBtn = document.getElementById('copy-email');
+        const copyStatus = document.getElementById('copy-status');
+
+        if (copyBtn && copyStatus) {
+            copyBtn.addEventListener('click', () => {
+                const email = 'ryan.pasulohan@gmail.com';
+                const temp = document.createElement('textarea');
+                temp.value = email;
+                temp.setAttribute('readonly', '');
+                temp.style.position = 'fixed';
+                temp.style.left = '-9999px';
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand('copy');
+                document.body.removeChild(temp);
+
+                copyStatus.textContent = 'Copied';
+                copyStatus.classList.add('copied');
+
+                setTimeout(() => {
+                    copyStatus.textContent = 'Copy';
+                    copyStatus.classList.remove('copied');
+                }, 2200);
+            });
+        }
+    </script>
+</body>
+</html>
